@@ -24,6 +24,7 @@
 
 <script>
     import { MessageBox } from 'mint-ui'
+    import axios from 'axios'
     var userData = [
         {
             index: 'A',
@@ -99,6 +100,16 @@
             return {
                 userData: userData
             }
+        },
+        created() {
+            axios
+                .get('/api/users/profile')
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         },
         methods: {
             telAlert: function(tel) {
